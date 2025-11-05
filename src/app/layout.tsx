@@ -1,10 +1,25 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from "next/font/local";
 import './globals.css';
 import { QueryProvider } from '@/components/QueryProvider';
 import { AuthProvider } from '@/components/AuthProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = localFont({
+  src: [
+    {
+      path: "../Inter-VariableFont_opszwght.ttf",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "../Inter-Italic-VariableFont_opszwght.ttf",
+      weight: "100 900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: 'Voice to Notes',
@@ -17,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" >
+      <body className={`${inter.variable}`}>
         <QueryProvider>
           <AuthProvider>
             {children}
