@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AuthProvider } from 'better-auth/react';
-import { useAuth } from 'better-auth/react/client';
+import { AuthProvider, useAuth } from 'better-auth/react';
+import { } from 'better-auth/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import CreateNoteModal from '@/components/CreateNoteModal';
