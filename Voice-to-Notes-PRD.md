@@ -1506,7 +1506,7 @@ Create `src/components/AuthProvider.tsx`:
 ```typescript
 'use client';
 
-import { SessionProvider } from 'better-auth/react';
+import { BetterAuthProvider  } from 'better-auth/react';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -1514,9 +1514,9 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   return (
-    <SessionProvider>
+    <BetterAuthProvider >
       {children}
-    </SessionProvider>
+    </BetterAuthProvider >
   );
 }
 ```
@@ -1595,9 +1595,8 @@ Update `tsconfig.json`:
 
 3. **Run database migrations**:
    ```bash
-   npm run db:push
+   npm run db:push  // done
    ```
-
 4. **Start development server**:
    ```bash
    npm run dev
