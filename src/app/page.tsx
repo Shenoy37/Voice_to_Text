@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AuthProvider, useAuth } from 'better-auth/react';
+// import { AuthProvider, useAuth } from 'better-auth/react';
 import { } from 'better-auth/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,7 +12,7 @@ import { authClient } from '@/lib/auth-client';
 
 export default function HomePage() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const { data: session, isPending } = useAuth();
+  const { data: session, isPending } = authClient.useSession();
 
   const handleLogin = async () => {
     await authClient.signIn.social({
