@@ -95,7 +95,9 @@ export default function CreateNoteModal({ open, onOpenChange }: CreateNoteModalP
                         <Label className="text-sm font-medium mb-3 block">
                             Voice Recording
                         </Label>
-                        <VoiceRecorder onTranscriptionComplete={handleTranscriptionComplete} />
+                        <VoiceRecorder
+                            onTranscriptionComplete={handleTranscriptionComplete}
+                        />
                         {transcription && (
                             <div className="mt-4 p-3 bg-background rounded border">
                                 <p className="text-sm text-muted-foreground mb-1">Transcription:</p>

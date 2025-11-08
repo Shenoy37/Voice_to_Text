@@ -1,0 +1,266 @@
+{
+  "testExecutionTime": "2025-11-07T22:56:45.055Z",
+  "baseUrl": "http://localhost:3000",
+  "summary": {
+    "totalTests": 14,
+    "passedTests": 11,
+    "failedTests": 3,
+    "passRate": "79%"
+  },
+  "categoryResults": {
+    "authentication": [
+      {
+        "testName": "OAuth Denial",
+        "testPassed": false,
+        "status": 307,
+        "finalUrl": "http://localhost:3000/api/auth/callback/google?error=access_denied&state=test_state",
+        "redirectCount": 0,
+        "expectedBehavior": "Should redirect to error page with access_denied error",
+        "actualBehavior": "Final URL: http://localhost:3000/api/auth/callback/google?error=access_denied&state=test_state",
+        "errorHandled": false,
+        "errorParameter": true
+      },
+      {
+        "testName": "Invalid OAuth State",
+        "testPassed": false,
+        "status": 307,
+        "finalUrl": "http://localhost:3000/api/auth/callback/google?code=test_code&state=invalid_state",
+        "redirectCount": 0,
+        "expectedBehavior": "Should reject invalid state and redirect to error page",
+        "actualBehavior": "Final URL: http://localhost:3000/api/auth/callback/google?code=test_code&state=invalid_state",
+        "errorHandled": false,
+        "errorParameter": false
+      },
+      {
+        "testName": "Expired Authorization Code",
+        "testPassed": false,
+        "status": 307,
+        "finalUrl": "http://localhost:3000/api/auth/callback/google?code=expired_code&state=test_state",
+        "expectedBehavior": "Should handle expired code and redirect to error page",
+        "actualBehavior": "Final URL: http://localhost:3000/api/auth/callback/google?code=expired_code&state=test_state",
+        "errorHandled": false
+      }
+    ],
+    "session": [
+      {
+        "testName": "Expired Session",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should handle expired session gracefully",
+        "actualBehavior": "Status: 200, Response handled: true",
+        "errorHandled": true
+      },
+      {
+        "testName": "Invalid Session Token",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should handle invalid session token gracefully",
+        "actualBehavior": "Status: 200, Response handled: true",
+        "errorHandled": true
+      },
+      {
+        "testName": "Corrupted Session",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should handle corrupted session gracefully",
+        "actualBehavior": "Status: 200, Response handled: true",
+        "errorHandled": true
+      }
+    ],
+    "errorPage": [
+      {
+        "errorType": "access_denied",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should display appropriate error message for access_denied",
+        "actualBehavior": "Status: 200, Page loaded: true",
+        "errorPageLoaded": true
+      },
+      {
+        "errorType": "invalid_request",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should display appropriate error message for invalid_request",
+        "actualBehavior": "Status: 200, Page loaded: true",
+        "errorPageLoaded": true
+      },
+      {
+        "errorType": "server_error",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should display appropriate error message for server_error",
+        "actualBehavior": "Status: 200, Page loaded: true",
+        "errorPageLoaded": true
+      },
+      {
+        "errorType": "configuration",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should display appropriate error message for configuration",
+        "actualBehavior": "Status: 200, Page loaded: true",
+        "errorPageLoaded": true
+      },
+      {
+        "errorType": "session_expired",
+        "testPassed": true,
+        "status": 200,
+        "expectedBehavior": "Should display appropriate error message for session_expired",
+        "actualBehavior": "Status: 200, Page loaded: true",
+        "errorPageLoaded": true
+      }
+    ],
+    "security": [
+      {
+        "testName": "XSS Protection",
+        "testPassed": true,
+        "status": 200,
+        "expectedStatus": 200,
+        "expectedBehavior": "Should handle security attack gracefully",
+        "actualBehavior": "Status: 200, Security handled: true",
+        "securityHandled": true
+      },
+      {
+        "testName": "SQL Injection Attempt",
+        "testPassed": true,
+        "status": 200,
+        "expectedStatus": 200,
+        "expectedBehavior": "Should handle security attack gracefully",
+        "actualBehavior": "Status: 200, Security handled: true",
+        "securityHandled": true
+      },
+      {
+        "testName": "Authentication Bypass",
+        "testPassed": true,
+        "status": 200,
+        "expectedStatus": 401,
+        "expectedBehavior": "Should prevent authentication bypass",
+        "actualBehavior": "Status: 200, Security handled: true",
+        "securityHandled": true
+      }
+    ]
+  },
+  "allTests": [
+    {
+      "testName": "OAuth Denial",
+      "testPassed": false,
+      "status": 307,
+      "finalUrl": "http://localhost:3000/api/auth/callback/google?error=access_denied&state=test_state",
+      "redirectCount": 0,
+      "expectedBehavior": "Should redirect to error page with access_denied error",
+      "actualBehavior": "Final URL: http://localhost:3000/api/auth/callback/google?error=access_denied&state=test_state",
+      "errorHandled": false,
+      "errorParameter": true
+    },
+    {
+      "testName": "Invalid OAuth State",
+      "testPassed": false,
+      "status": 307,
+      "finalUrl": "http://localhost:3000/api/auth/callback/google?code=test_code&state=invalid_state",
+      "redirectCount": 0,
+      "expectedBehavior": "Should reject invalid state and redirect to error page",
+      "actualBehavior": "Final URL: http://localhost:3000/api/auth/callback/google?code=test_code&state=invalid_state",
+      "errorHandled": false,
+      "errorParameter": false
+    },
+    {
+      "testName": "Expired Authorization Code",
+      "testPassed": false,
+      "status": 307,
+      "finalUrl": "http://localhost:3000/api/auth/callback/google?code=expired_code&state=test_state",
+      "expectedBehavior": "Should handle expired code and redirect to error page",
+      "actualBehavior": "Final URL: http://localhost:3000/api/auth/callback/google?code=expired_code&state=test_state",
+      "errorHandled": false
+    },
+    {
+      "errorType": "access_denied",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should display appropriate error message for access_denied",
+      "actualBehavior": "Status: 200, Page loaded: true",
+      "errorPageLoaded": true
+    },
+    {
+      "errorType": "invalid_request",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should display appropriate error message for invalid_request",
+      "actualBehavior": "Status: 200, Page loaded: true",
+      "errorPageLoaded": true
+    },
+    {
+      "errorType": "server_error",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should display appropriate error message for server_error",
+      "actualBehavior": "Status: 200, Page loaded: true",
+      "errorPageLoaded": true
+    },
+    {
+      "errorType": "configuration",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should display appropriate error message for configuration",
+      "actualBehavior": "Status: 200, Page loaded: true",
+      "errorPageLoaded": true
+    },
+    {
+      "errorType": "session_expired",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should display appropriate error message for session_expired",
+      "actualBehavior": "Status: 200, Page loaded: true",
+      "errorPageLoaded": true
+    },
+    {
+      "testName": "Expired Session",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should handle expired session gracefully",
+      "actualBehavior": "Status: 200, Response handled: true",
+      "errorHandled": true
+    },
+    {
+      "testName": "Invalid Session Token",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should handle invalid session token gracefully",
+      "actualBehavior": "Status: 200, Response handled: true",
+      "errorHandled": true
+    },
+    {
+      "testName": "Corrupted Session",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should handle corrupted session gracefully",
+      "actualBehavior": "Status: 200, Response handled: true",
+      "errorHandled": true
+    },
+    {
+      "testName": "XSS Protection",
+      "testPassed": true,
+      "status": 200,
+      "expectedStatus": 200,
+      "expectedBehavior": "Should handle security attack gracefully",
+      "actualBehavior": "Status: 200, Security handled: true",
+      "securityHandled": true
+    },
+    {
+      "testName": "SQL Injection Attempt",
+      "testPassed": true,
+      "status": 200,
+      "expectedStatus": 200,
+      "expectedBehavior": "Should handle security attack gracefully",
+      "actualBehavior": "Status: 200, Security handled: true",
+      "securityHandled": true
+    },
+    {
+      "testName": "Authentication Bypass",
+      "testPassed": true,
+      "status": 200,
+      "expectedStatus": 401,
+      "expectedBehavior": "Should prevent authentication bypass",
+      "actualBehavior": "Status: 200, Security handled: true",
+      "securityHandled": true
+    }
+  ]
+}

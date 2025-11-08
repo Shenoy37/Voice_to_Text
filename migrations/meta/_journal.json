@@ -8,6 +8,13 @@
       "when": 1761994300622,
       "tag": "0000_handy_tyger_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1762545691827,
+      "tag": "0001_chilly_spirit",
+      "breakpoints": true
     }
   ]
 }

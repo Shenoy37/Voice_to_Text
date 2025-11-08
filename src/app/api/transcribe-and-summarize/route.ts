@@ -1,4 +1,4 @@
-import fs from "fs";
+import { createReadStream } from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from "openai";
 import { writeFile, unlink, mkdir } from 'fs/promises';
@@ -41,6 +41,15 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // Validate file size (max 25MB)
+        const maxSize = 25 * 1024 * 1024; // 25MB in bytes
+        if (file.size > maxSize) {
+            return NextResponse.json(
+                { error: 'File too large. Maximum size is 25MB.' },
+                { status: 400 }
+            );
+        }
+
         // Create temporary file
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
@@ -52,7 +61,7 @@ export async function POST(request: NextRequest) {
         try {
             // Transcribe audio
             const transcription = await openai.audio.transcriptions.create({
-                file: require('fs').createReadStream(tempPath),
+                file: createReadStream(tempPath),
                 model: 'whisper-1',
                 response_format: 'json',
                 language: 'en',

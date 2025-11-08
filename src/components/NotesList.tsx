@@ -11,7 +11,7 @@ import { formatDistanceToNow } from 'date-fns';
 
 export default function NotesList() {
     const [currentPage, setCurrentPage] = useState(1);
-    const { data, isLoading, error } = useNotes(currentPage, 10);
+    const { data, isLoading, error } = useNotes({ page: currentPage, limit: 10 });
     const deleteNoteMutation = useDeleteNote();
 
     const handleDeleteNote = async (id: number) => {
@@ -24,7 +24,27 @@ export default function NotesList() {
         }
     };
 
-    const handleEditNote = (note: any) => {
+    const handleEditNote = (note: {
+        id: number;
+        title: string;
+        content: string;
+        summary?: string;
+        transcription?: string;
+        audioUrl?: string;
+        duration?: number;
+        status: 'draft' | 'published' | 'processing' | 'completed' | 'failed';
+        priority: 'low' | 'medium' | 'high' | 'urgent';
+        isFavorite: boolean;
+        isBookmarked: boolean;
+        categoryId?: number;
+        reminderAt?: string;
+        version: number;
+        metadata?: Record<string, unknown>;
+        wordCount: number;
+        readingTime: number;
+        createdAt: string;
+        updatedAt: string;
+    }) => {
         // This would open an edit dialog/modal
         console.log('Edit note:', note);
     };

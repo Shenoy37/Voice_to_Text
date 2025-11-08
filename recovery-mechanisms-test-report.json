@@ -1,0 +1,108 @@
+{
+  "testExecutionTime": "2025-11-07T22:57:39.901Z",
+  "baseUrl": "http://localhost:3000",
+  "summary": {
+    "totalTests": 5,
+    "passedTests": 5,
+    "failedTests": 0,
+    "passRate": "100%"
+  },
+  "results": {
+    "automaticRetry": {
+      "testName": "Automatic Retry Functionality",
+      "testPassed": true,
+      "status": [
+        200,
+        200,
+        200
+      ],
+      "expectedBehavior": "Should implement automatic retry for transient failures",
+      "actualBehavior": "Retry handled: true, Responses: 200,200,200",
+      "automaticRetry": true
+    },
+    "manualRetry": {
+      "testName": "Manual Retry Options",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should provide manual retry options",
+      "actualBehavior": "Status: 200, Manual retry available: true",
+      "manualRetryAvailable": true
+    },
+    "errorStateClearing": {
+      "testName": "Error State Clearing",
+      "testPassed": true,
+      "status": {
+        "error": 200,
+        "clear": 200
+      },
+      "expectedBehavior": "Should clear error states appropriately",
+      "actualBehavior": "Error page: true, Clear state: true",
+      "errorStateCleared": true
+    },
+    "gracefulDegradation": {
+      "testName": "Graceful Degradation",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should degrade gracefully when features are unavailable",
+      "actualBehavior": "Status: 200, Graceful degradation: true",
+      "gracefulDegradation": true
+    },
+    "fallbackAuth": {
+      "testName": "Fallback Authentication Methods",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should provide fallback authentication methods",
+      "actualBehavior": "Status: 200, Fallback available: true",
+      "fallbackAuthAvailable": true
+    }
+  },
+  "allTests": [
+    {
+      "testName": "Automatic Retry Functionality",
+      "testPassed": true,
+      "status": [
+        200,
+        200,
+        200
+      ],
+      "expectedBehavior": "Should implement automatic retry for transient failures",
+      "actualBehavior": "Retry handled: true, Responses: 200,200,200",
+      "automaticRetry": true
+    },
+    {
+      "testName": "Manual Retry Options",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should provide manual retry options",
+      "actualBehavior": "Status: 200, Manual retry available: true",
+      "manualRetryAvailable": true
+    },
+    {
+      "testName": "Error State Clearing",
+      "testPassed": true,
+      "status": {
+        "error": 200,
+        "clear": 200
+      },
+      "expectedBehavior": "Should clear error states appropriately",
+      "actualBehavior": "Error page: true, Clear state: true",
+      "errorStateCleared": true
+    },
+    {
+      "testName": "Graceful Degradation",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should degrade gracefully when features are unavailable",
+      "actualBehavior": "Status: 200, Graceful degradation: true",
+      "gracefulDegradation": true
+    },
+    {
+      "testName": "Fallback Authentication Methods",
+      "testPassed": true,
+      "status": 200,
+      "expectedBehavior": "Should provide fallback authentication methods",
+      "actualBehavior": "Status: 200, Fallback available: true",
+      "fallbackAuthAvailable": true
+    }
+  ]
+}

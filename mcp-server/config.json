@@ -1,0 +1,36 @@
+{
+    "server": {
+        "name": "voice-to-notes-transcription",
+        "version": "1.0.0",
+        "description": "MCP server for live audio transcription with OpenAI Whisper"
+    },
+    "transcription": {
+        "maxConcurrentJobs": 3,
+        "defaultLanguage": "en",
+        "defaultTemperature": 0.0,
+        "supportedFormats": [
+            "wav",
+            "mp3",
+            "webm",
+            "m4a",
+            "flac",
+            "aac",
+            "ogg"
+        ],
+        "maxFileSize": "25MB",
+        "tempDir": "./temp"
+    },
+    "realtime": {
+        "websocketPortRange": {
+            "min": 3010,
+            "max": 3100
+        },
+        "chunkSize": 1024,
+        "sampleRate": 16000
+    },
+    "openai": {
+        "model": "whisper-1",
+        "summaryModel": "gpt-4o-mini",
+        "maxTokens": 300
+    }
+}
